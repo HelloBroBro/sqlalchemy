@@ -9,8 +9,22 @@
 
 
 .. changelog::
-    :version: 2.0.27
+    :version: 2.0.28
     :include_notes_from: unreleased_20
+
+.. changelog::
+    :version: 2.0.27
+    :released: February 13, 2024
+
+    .. change::
+        :tags: bug, postgresql, regression
+        :tickets: 11005
+
+        Fixed regression caused by just-released fix for :ticket:`10863` where an
+        invalid exception class were added to the "except" block, which does not
+        get exercised unless such a catch actually happens.   A mock-style test has
+        been added to ensure this catch is exercised in unit tests.
+
 
 .. changelog::
     :version: 2.0.26

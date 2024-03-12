@@ -1,5 +1,13 @@
+from typing import Any
+
+from sqlalchemy import Connection
+from sqlalchemy import select
 from sqlalchemy import text
 from sqlalchemy.ext.asyncio import create_async_engine
+
+
+def work_sync(conn: Connection, foo: int) -> Any:
+    pass
 
 
 async def asyncio() -> None:
@@ -53,3 +61,13 @@ async def asyncio() -> None:
 
         # EXPECTED_TYPE: CursorResult[Unpack[.*tuple[Any, ...]]]
         reveal_type(result)
+
+        await conn.run_sync(work_sync, 1)
+
+        # EXPECTED_MYPY: Missing positional argument "foo" in call to "run_sync" of "AsyncConnection"
+        await conn.run_sync(work_sync)
+
+    ce = select(1).compile(e)
+    ce.statement
+    cc = select(1).compile(conn)
+    cc.statement

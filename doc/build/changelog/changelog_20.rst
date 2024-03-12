@@ -27,7 +27,7 @@
         value the DBAPI offers for any kind of statement will be available using
         the :attr:`_engine.CursorResult.rowcount` attribute from the
         :class:`_engine.CursorResult`.  This allows the rowcount to be accessed for
-        statments such as INSERT and SELECT, to the degree supported by the DBAPI
+        statements such as INSERT and SELECT, to the degree supported by the DBAPI
         in use. The :ref:`engine_insertmanyvalues` also supports this option and
         will ensure :attr:`_engine.CursorResult.rowcount` is correctly set for a
         bulk INSERT of rows when set.
@@ -3612,7 +3612,7 @@
         Added an error message when a :func:`_orm.relationship` is mapped against
         an abstract container type, such as ``Mapped[Sequence[B]]``, without
         providing the :paramref:`_orm.relationship.container_class` parameter which
-        is necessary when the type is abstract. Previously the the abstract
+        is necessary when the type is abstract. Previously the abstract
         container would attempt to be instantiated at a later step and fail.
 
 
